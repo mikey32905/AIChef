@@ -81,7 +81,7 @@ namespace AIChef.Server.Services
 
         public async Task<List<RecipeIdea>> CreateRecipeIdeas(string mealtime, List<string> ingredientList)
         {
-            string url = $"{_baseUrl}chat/completions";
+            string url = $"{_baseUrl}chat/completions ";//
 
             //ideas - add in keto-friendly, lo carb
             string systemPrompt = "You are a world-renowned chef. I will send you a list of ingredients and a meal time. You will respond with 5 ideas for dishes.";
@@ -121,7 +121,7 @@ namespace AIChef.Server.Services
                 FunctionCall = new {Name = _ideaFunction.Name}
             };
 
-            HttpResponseMessage httpResponse = await _httpClient.PatchAsJsonAsync(url, request, _jsonOptions);
+            HttpResponseMessage httpResponse = await _httpClient.PostAsJsonAsync(url, request, _jsonOptions);
 
             ChatResponse? response = await httpResponse.Content.ReadFromJsonAsync<ChatResponse>();
 
