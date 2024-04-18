@@ -21,28 +21,42 @@ namespace AIChef.Server.Controllers
         [HttpPost, Route("GetRecipeIdeas")]
         public async Task<ActionResult<List<RecipeIdea>>> GetRecipeIdeas(RecipeParms recipeParms)
         {
-            //string mealtime = recipeParms.MealTime;
-            //List<string> ingredients = recipeParms.Ingredients
-            //                                      .Where(x => !string.IsNullOrEmpty(x.Description))
-            //                                      .Select(x => x.Description)   
-            //                                      .ToList();
+            string mealtime = recipeParms.MealTime;
+            List<string> ingredients = recipeParms.Ingredients
+                                                  .Where(x => !string.IsNullOrEmpty(x.Description))
+                                                  .Select(x => x.Description)
+                                                  .ToList();
 
-            //if (string.IsNullOrEmpty(mealtime))
-            //{
-            //    mealtime = "Breakfast";
-            //}
+            if (string.IsNullOrEmpty(mealtime))
+            {
+                mealtime = "Breakfast";
+            }
 
-            //var ideas = await _openAIservice.CreateRecipeIdeas(mealtime, ingredients);
+            var ideas = await _openAIservice.CreateRecipeIdeas(mealtime, ingredients);
 
-            //return ideas;
+            return ideas;
 
-            return SampleData.RecipeIdeas;
+            //return SampleData.RecipeIdeas;
         }
 
         [HttpPost, Route("GetRecipe")]
         public async Task<ActionResult<Recipe?>> GetRecipe(RecipeParms recipeParms)
         {
-            return SampleData.Recipe;
+            List<string> ingredients = recipeParms.Ingredients
+                                                  .Where (x => !string.IsNullOrEmpty(x.Description))
+                                                  .Select(x => x.Description!)
+                                                  .ToList();
+
+            string? title = recipeParms.SelectedIdea;
+
+            if (string.IsNullOrEmpty(title))
+            {
+                return BadRequest();
+            }
+
+            var recipe = await _openAIservice.CreateRecipe(title, ingredients);
+            return recipe;
+            //return SampleData.Recipe;
         }
 
         [HttpGet, Route("GetRecipeImage")]
