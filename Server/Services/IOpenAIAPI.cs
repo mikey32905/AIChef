@@ -8,5 +8,6 @@ namespace AIChef.Server.Services
         
         Task<Recipe?> CreateRecipe(string aTitle, List<string> aIngredients);
 
+        Task<RecipeImage?> CreateRecipeImage(string aTitle);
     }
 }
