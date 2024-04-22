@@ -85,7 +85,7 @@ else
                     SelectedIdea = title
                 };
 
-            //get the recipe image
+            //get the recipe image  
             HttpResponseMessage responseImage = await Http.GetAsync($"Recipe/GetRecipeImage?title={HttpUtility.UrlEncode(title)}");
             var recipeImage = await responseImage.Content.ReadFromJsonAsync<RecipeImage>();
             recipeImageUrl = recipeImage!.data[0]!.url;
