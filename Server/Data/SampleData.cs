@@ -67,7 +67,7 @@ namespace AIChef.Server.Data
             data = new ImageData[] {
                 new ImageData()
                 {
-                    url = "https://www.allrecipes.com/thmb/nX1dNGl1mKTUOLCKTkRmhPkdohE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/5969369-682611ebae5a42ddbcaaa90c27b3e1fd.jpg"
+                    url = "https://imgs.search.brave.com/65oFsI1cszj1f8cliOT7XOz82gZrC8_J5tjiTZkiRLA/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA0LzYyLzkzLzY2/LzM2MF9GXzQ2Mjkz/NjY4OV9CcEVFY3hm/Z011WVBmVGFJQU9D/MXRDRHVybXNubzdT/cC5qcGc" //"https://www.allrecipes.com/thmb/nX1dNGl1mKTUOLCKTkRmhPkdohE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/5969369-682611ebae5a42ddbcaaa90c27b3e1fd.jpg"
                 }
             }
         };
